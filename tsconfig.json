@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-        "target": "es2015",
-        "module": "commonjs",
+        "target": "ESNext",
+        "module": "ESNext",
         "declaration": true,
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
@@ -10,7 +10,6 @@
         "noFallthroughCasesInSwitch": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "suppressImplicitAnyIndexErrors": true,
         "strictNullChecks": true,
         "sourceMap": false,
         "noEmitOnError": true,

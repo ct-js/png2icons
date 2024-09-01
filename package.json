@@ -43,8 +43,6 @@
   "files": [
     "lib/icns-encoder.d.ts",
     "lib/icns-encoder.js",
-    "lib/resize2.js",
-    "lib/resize2.d.ts",
     "lib/resize3.js",
     "lib/resize3.d.ts",
     "lib/resize4.js",
@@ -59,8 +57,7 @@
   ],
   "types": "png2icons.d.ts",
   "devDependencies": {
-    "typescript": "3.5.2",
-    "tslint": "5.18.0",
+    "typescript": "5.5.4",
     "@types/node": "*"
   },
   "scripts": {
@@ -72,8 +69,6 @@
     "test_ico_bmp": "node png2icons-cli.js sample/sample.png sample/sample_bmp -ico -bc -i",
     "test_ico_png": "node png2icons-cli.js sample/sample.png sample/sample_png -icop -bc -i",
     "test_ico_we": "node png2icons-cli.js sample/sample.png sample/sample_we -icowe -bc -i",
-    "lint": "tslint --project ./tsconfig.json --config ./tslint.json",
-    "premake": "npm run lint",
     "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.ts')\""
   }
 }

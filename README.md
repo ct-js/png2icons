@@ -110,9 +110,9 @@ The return value is `null` in case of an error, otherwise a buffer which contain
 
 **Example:**
 
-```javascript
-var png2icons = require("png2icons");
-var fs = require("fs");
+```js
+import png2icons from 'png2icons';
+import fs from 'node:fs';
 
 var input = fs.readFileSync("sample.png");
 
