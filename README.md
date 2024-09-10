@@ -1,11 +1,17 @@
+
 # png2icons
 
 **png2icons generates [Apple ICNS](https://en.wikipedia.org/wiki/Apple_Icon_Image_format) and [Microsoft ICO](https://en.wikipedia.org/wiki/ICO_(file_format)) files from PNG files.**
 
-This Node.js module is platform independent and has *no* module or native dependencies, it works on both Apple and Microsoft systems (and probably other Node.js platforms). A command line interface and an API are provided. Standalone Node.js v12.2.0 x64 executabes created with [pkg](https://github.com/zeit/pkg) can be found in the [releases](https://github.com/idesis-gmbh/png2icons/releases) section.
+This Node.js & Bun module is platform independent and has *no* module or native dependencies, it works on both Apple and Microsoft systems (and probably other Node.js platforms). A command line interface and an API are provided.
 
 The ideal input is a 24 bit PNG with an alpha channel (RGBA) with 1024×1024 pixels but any other dimensions and most other PNG formats do also work. If you only need to create ICO files 256×256 pixels are sufficient. It's also possible to create icon files from non-quadratic source PNGs.
 
+# Fork info
+
+This fork is made by @CosmoMyzrailGorynych for ct.js game engine and is modified just to extent to be consumable by modern bundlers. The original code is hell and by no means I'm introducing new features to it — if you can, create a new dependency-free solution yourself, I have enough on my plate already.
+
+**This fork does not have default exports.** (See examples.)
 
 ## Technical notes
 
@@ -20,8 +26,6 @@ png2icons creates ICO files with the sizes 16, 24, 32, 48, 64, 72, 96, 128 and 2
 PNG in most cases produces much smaller file sizes but the generated ICO file can cause display problems in Windows version older than Windows 10. In general the files show up without problems in Windows Explorer at any size and at any resolution. This is true for Windows versions down to Windows 7 (older not tested), but the file properties dialog of older Windows versions may show a scrambled view of the embedded icon. Windows 10 does not have this problem.
 
 If the ICO file should be used as the embedded icon in a Windows executable the command line switch `-icowe` (or `-allwe`, see below) can be used. If used, png2icons will write all icons smaller than 64x64 pixels in Windows bitmap format to the output file and the rest in PNG format. This helps to reduce the icon storage size in the executable and seems to work well in all Windows versions. It has been tested in Windows 7 up to Windows 10 at all kinds of screen resolutions (normal and HiDPI) and also at all different magnification levels.
-
-
 
 
 ## Command line usage
@@ -88,12 +92,12 @@ Parameters identical for both `create*` functions:
 - `scalingAlgorithm` sets the algorithm to be used when scaling the input images for the various icon sizes. It can be one of the following constants:
 
     ```javascript
-    RESIZE_NEAREST_NEIGHBOR = 0;
-    RESIZE_BILINEAR = 1;
-    RESIZE_BICUBIC = 2;
-    RESIZE_BEZIER = 3;
-    RESIZE_HERMITE = 4;
-    RESIZE_BICUBIC2 = 5;
+    NEAREST_NEIGHBOR = 0;
+    BILINEAR = 1;
+    BICUBIC = 2;
+    BEZIER = 3;
+    HERMITE = 4;
+    BICUBIC2 = 5;
     ```
 
 - `numOfColors` controls the reduction of colors in the compressed output if PNG is used for the icons . A value of `0` retains all colors from `input` (lossless), a value greater than `0` reduces the colors to the given number (per color channel, so `256` is the maximum value). This can lead to much smaller files. Please note:   `numOfColors` is ignored if `usePNG` is set to `false` (`createICO`) but it is always used if `forWinExe` is `true`.
@@ -111,15 +115,21 @@ The return value is `null` in case of an error, otherwise a buffer which contain
 **Example:**
 
 ```js
-import png2icons from 'png2icons';
+import {setLogger,
+    createICNS,
+    createICO,
+    BILINEAR,
+    BEZIER,
+    HERMITE,
+    BICUBIC2} from 'png2icons';
 import fs from 'node:fs';
 
 var input = fs.readFileSync("sample.png");
 
 // Apple ICNS with bilinear interpolation and no color reduction.
 // Log infos via console.log.
-png2icons.setLogger(console.log);
-var output = png2icons.createICNS(input, png2icons.BILINEAR, 0);
+setLogger(console.log);
+var output = createICNS(input, BILINEAR, 0);
 if (output) {
     fs.writeFileSync("icon.icns", output);
 }
@@ -127,19 +137,19 @@ if (output) {
 // Microsoft ICO using PNG icons with Bezier interpolation and
 // reduction to 20 colors.
 // Log infos via console.log (logging function already set before).
-output = png2icons.createICO(input, png2icons.BEZIER, 20, true);
+output = createICO(input, BEZIER, 20, true);
 fs.writeFileSync("icon_png.ico", output);
 
 // Microsoft ICO using BMP icons with Hermite interpolation,
 // (numOfColors is ignored). Turn off any logging again.
-png2icons.setLogger(null);
-output = png2icons.createICO(input, png2icons.HERMITE, 0, false);
+setLogger(null);
+output = createICO(input, HERMITE, 0, false);
 fs.writeFileSync("icon_bmp.ico", output);
 
 // Microsoft ICO using PNG and BMP icons with alternative bicubic
 // interpolation, (numOfColors applies!). Suitable for embedding
 // the icon file in Windows executables. Logging is already off.
-output = png2icons.createICO(input, png2icons.BICUBIC2, 0, false, true);
+output = createICO(input, BICUBIC2, 0, false, true);
 fs.writeFileSync("icon_winexe.ico", output);
 ```
 
@@ -170,6 +180,10 @@ See the `LICENSE` file for details.
 
 
 ## Changelog
+
+### 3.0.0
+
+Modernize code a bit so it works with modern bundlers.
 
 ### 2.0.1
 

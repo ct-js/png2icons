@@ -5,6 +5,7 @@
   "copyright": "©2017, 2018, 2019, idesis GmbH",
   "version": "2.0.1",
   "identifier": "de.idesis.png2icons",
+  "type": "module",
   "keywords": [
     "icns",
     "ico",
@@ -61,14 +62,14 @@
     "@types/node": "*"
   },
   "scripts": {
-    "test": "node png2icons-cli.js sample/sample.png sample/sample -allwe -bc -i",
-    "test_all_bmp": "node png2icons-cli.js sample/sample.png sample/sample -all -bc -i",
-    "test_all_png": "node png2icons-cli.js sample/sample.png sample/sample -allp -bc -i",
-    "test_all_we": "node png2icons-cli.js sample/sample.png sample/sample -allwe -bc -i",
-    "test_icns": "node png2icons-cli.js sample/sample.png sample/sample -icns -bc -i",
-    "test_ico_bmp": "node png2icons-cli.js sample/sample.png sample/sample_bmp -ico -bc -i",
-    "test_ico_png": "node png2icons-cli.js sample/sample.png sample/sample_png -icop -bc -i",
-    "test_ico_we": "node png2icons-cli.js sample/sample.png sample/sample_we -icowe -bc -i",
-    "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.ts')\""
+    "test": "node png2icons-cli.mjs sample/sample.png sample/sample -allwe -bc -i",
+    "test_all_bmp": "node png2icons-cli.mjs sample/sample.png sample/sample -all -bc -i",
+    "test_all_png": "node png2icons-cli.mjs sample/sample.png sample/sample -allp -bc -i",
+    "test_all_we": "node png2icons-cli.mjs sample/sample.png sample/sample -allwe -bc -i",
+    "test_icns": "node png2icons-cli.mjs sample/sample.png sample/sample -icns -bc -i",
+    "test_ico_bmp": "node png2icons-cli.mjs sample/sample.png sample/sample_bmp -ico -bc -i",
+    "test_ico_png": "node png2icons-cli.mjs sample/sample.png sample/sample_png -icop -bc -i",
+    "test_ico_we": "node png2icons-cli.mjs sample/sample.png sample/sample_we -icowe -bc -i",
+    "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.mts')\""
   }
 }

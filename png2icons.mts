@@ -1,8 +1,8 @@
-import { encode as encodeWithPackBitsForICNS } from "./lib/icns-encoder";
-import { Image } from "./lib/Image";
-import * as Resize from "./lib/resize3";
-import * as Resize4 from "./lib/resize4";
-import * as UPNG from "./lib/UPNG";
+import { encode as encodeWithPackBitsForICNS } from "./lib/icns-encoder.mjs";
+import { Image } from "./lib/Image.mjs";
+import * as Resize from "./lib/resize3.mjs";
+import * as Resize4 from "./lib/resize4.mjs";
+import * as UPNG from "./lib/UPNG.mjs";
 
 /**
  * Support of Apple ICNS format is based on https://en.wikipedia.org/wiki/Apple_Icon_Image_format

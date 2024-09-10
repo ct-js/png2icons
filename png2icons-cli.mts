@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { readFileSync, writeFileSync } from "fs";
-import { parse, resolve } from "path";
-import * as PNG2ICONS from "./png2icons";
+import { resolve } from "path";
+import * as PNG2ICONS from "./png2icons.mjs";
 
 /**
  * Number of arguments.
@@ -11,7 +11,7 @@ const argc: number = process.argv.length;
 /**
  * Name of "executable".
  */
-const cli: string = parse(__filename).name;
+const cli: string = 'png2icons';
 /**
  * Desired output format.
  */
