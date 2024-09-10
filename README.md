@@ -9,7 +9,7 @@ The ideal input is a 24 bit PNG with an alpha channel (RGBA) with 1024×1024 pix
 
 # Fork info
 
-This fork is made by @CosmoMyzrailGorynych for ct.js game engine and is modified just to extent to be consumable by modern bundlers. The original code is hell and by no means I'm introducing new features to it — if you can, create a new dependency-free solution yourself, I have enough on my plate already.
+This fork is made by @CosmoMyzrailGorynych for ct.js game engine and is modified just by extent to be consumable by modern bundlers. The original code is hell and by no means I'm introducing new features to it — if you can, create a new dependency-free solution yourself, I have enough on my plate already.
 
 **This fork does not have default exports.** (See examples.)
 
