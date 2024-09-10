@@ -9,7 +9,7 @@ The ideal input is a 24 bit PNG with an alpha channel (RGBA) with 1024×1024 pix
 
 # Fork info
 
-This fork is made by @CosmoMyzrailGorynych for ct.js game engine and is modified just by extent to be consumable by modern bundlers. The original code is hell and by no means I'm introducing new features to it — if you can, create a new dependency-free solution yourself, I have enough on my plate already.
+This fork is made by @CosmoMyzrailGorynych for ct.js game engine and is modified just by extent to be consumable by modern bundlers. The original code is hell and by no means I'm introducing new features to it — if you can, create a new dependency-free solution yourself.
 
 **This fork does not have default exports.** (See examples.)
 
@@ -121,7 +121,7 @@ import {setLogger,
     BILINEAR,
     BEZIER,
     HERMITE,
-    BICUBIC2} from 'png2icons';
+    BICUBIC2} from '@ctjs/png2icons';
 import fs from 'node:fs';
 
 var input = fs.readFileSync("sample.png");
@@ -156,10 +156,7 @@ fs.writeFileSync("icon_winexe.ico", output);
 
 ## Development
 
-After cloning the repository run `npm i` or `npm install` to install the necessary dependencies. A run of `npm run make` creates the JavaScript output files. `npm run lint` checks the TypeScript sources with a linter. `npm test` converts the sample PNG file in `./sample` to both the ICNS and ICO (for Windows executables) format (`./sample/sample.icns` and `./sample/sample.ico` will be generated).
-
-png2icons is developed in TypeScript. If you're using TypeScript make sure that you add `@types/node` to the development dependencies in your `package.json`, otherwise the compiler will complain about missing definitions.
-
+After cloning the repository run `npm i` or `npm install` to install the necessary dependencies. A run of `npm run make` creates the JavaScript output files. `npm test` converts the sample PNG file in `./sample` to both the ICNS and ICO (for Windows executables) format (`./sample/sample.icns` and `./sample/sample.ico` will be generated).
 
 ## Credits
 
@@ -175,6 +172,7 @@ This module wouldn't have been possible without code from the following projects
 ## License
 
 MIT © [idesis GmbH](https://www.idesis.de), Rellinghauser Straße 334F, D-45136 Essen
+MIT © CoMiGo Games 2024-present.
 
 See the `LICENSE` file for details.
 
