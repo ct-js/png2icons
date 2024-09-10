@@ -2,7 +2,7 @@
   "name": "@ctjs/png2icons",
   "description": "Create Apple ICNS and Microsoft ICO files from PNG",
   "copyright": "© 2017, 2018, 2019, idesis GmbH. © 2024 Cosmo Myzrail Gorynych",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "identifier": "rocks.ctjs.png2icons",
   "type": "module",
   "keywords": [
@@ -12,7 +12,7 @@
     "icons",
     "png"
   ],
-  "homepage": "https://github.com/idesis-gmbh/png2icons",
+  "homepage": "https://github.com/ct-js/png2icons",
   "author": {
     "name": "Cosmo Myzrail Gorynych",
     "email": "cosmomyzrailgorynych@gmail.com",
@@ -29,13 +29,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/idesis-gmbh/png2icons.git"
+    "url": "git+https://github.com/ct-js/png2icons.git"
   },
   "readme": "README.md",
-  "bugs": {
-    "url": "https://github.com/idesis-gmbh/png2icons/issues",
-    "email": "produktion@idesis.de"
-  },
   "private": false,
   "license": "MIT",
   "main": "png2icons.mjs",
