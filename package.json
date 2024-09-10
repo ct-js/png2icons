@@ -72,5 +72,8 @@
     "test_ico_png": "node png2icons-cli.mjs sample/sample.png sample/sample_png -icop -bc -i",
     "test_ico_we": "node png2icons-cli.mjs sample/sample.png sample/sample_we -icowe -bc -i",
     "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.mts')\""
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
