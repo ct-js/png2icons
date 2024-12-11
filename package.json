@@ -2,7 +2,7 @@
   "name": "@ctjs/png2icons",
   "description": "Create Apple ICNS and Microsoft ICO files from PNG",
   "copyright": "© 2017, 2018, 2019, idesis GmbH. © 2024 Cosmo Myzrail Gorynych",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "identifier": "rocks.ctjs.png2icons",
   "type": "module",
   "keywords": [
@@ -38,6 +38,10 @@
   "bin": {
     "png2icons": "./png2icons-cli.mjs"
   },
+  "exports": {
+    "import": "./png2icons.mjs",
+    "require": "./png2icons.js"
+  },
   "files": [
     "lib/icns-encoder.d.mts",
     "lib/icns-encoder.mjs",
@@ -50,13 +54,15 @@
     "lib/UZIP.mjs",
     "sample/sample.png",
     "png2icons.mjs",
+    "png2icons.js",
     "png2icons-cli.mjs",
     "png2icons.d.mts"
   ],
   "types": "png2icons.d.mts",
   "devDependencies": {
-    "typescript": "5.5.4",
-    "@types/node": "*"
+    "@types/node": "*",
+    "rollup": "^4.28.1",
+    "typescript": "5.5.4"
   },
   "scripts": {
     "test": "node png2icons-cli.mjs sample/sample.png sample/sample -allwe -bc -i",
@@ -67,7 +73,7 @@
     "test_ico_bmp": "node png2icons-cli.mjs sample/sample.png sample/sample_bmp -ico -bc -i",
     "test_ico_png": "node png2icons-cli.mjs sample/sample.png sample/sample_png -icop -bc -i",
     "test_ico_we": "node png2icons-cli.mjs sample/sample.png sample/sample_we -icowe -bc -i",
-    "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.mts')\""
+    "make": "tsc -p tsconfig.json && node -e \"require('fs').unlinkSync('png2icons-cli.d.mts')\" && npx rollup png2icons.mjs --file png2icons.js --format cjs"
   },
   "publishConfig": {
     "access": "public"
